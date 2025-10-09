@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Movimientos principales del planeta</title>
+ 
+  <script>document.documentElement.classList.add('js');</script>
+  <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+  <div class="stars"></div>
+  <div class="container">
+    <h1>  Movimientos   principales   de   la   Tierra   y   sus      efectos   en   los   humanos</h1>
+    <p>Antes de viajar al espacio, debemos comprender los <strong>4 movimientos principales</strong> de nuestro planeta y cómo influyen directamente en nuestra vida.</p>
+
+    <div class="gallery" aria-roledescription="carrusel" aria-label="Carrusel de movimientos de la Tierra">
+      <div class="slide active" tabindex="0">
+        <h2>1. Rotación</h2>
+        <p>La Tierra gira sobre su propio eje en aproximadamente 24 horas.</p>
+        <ul>
+          <li>Genera el ciclo de <strong>día y noche</strong>.</li>
+          <li>Regula el <strong>ritmo circadiano</strong> de las personas (sueño, hormonas, energía).</li>
+          <li>Causa variaciones de temperatura entre el día y la noche.</li>
+        </ul>
+        <img src="images/logo.png" alt="Logo CR7" class="corner-logo">
+      </div>
+      <div class="slide" tabindex="0">
+        <h2>2. Traslación</h2>
+        <p>Es el movimiento de la Tierra alrededor del Sol, que tarda 365 días y 6 horas.</p>
+        <ul>
+          <li>Origina el <strong>año</strong> y define la duración de las estaciones.</li>
+          <li>Con la inclinación del eje, produce <strong>variaciones climáticas</strong> que afectan salud y agricultura.</li>
+          <li>Influye en la exposición solar y en nuestro estado de ánimo.</li>
+        </ul>
+        <img src="images/logo.png" alt="Logo CR7" class="corner-logo">
+        
+      </div>
+      <div class="slide" tabindex="0">
+        <h2>3. Precesión</h2>
+        <p>Es el lento movimiento de bamboleo del eje terrestre, con un ciclo de unos 26,000 años.</p>
+        <ul>
+          <li>Modifica a largo plazo la posición de las estrellas en el cielo.</li>
+          <li>Influye en los cambios climáticos a escalas de miles de años.</li>
+          <li>No se nota en la vida diaria, pero afecta la historia evolutiva del clima.</li>
+        </ul>
+        <img src="images/logo1.png" alt="Logo" class="corner-logo">
+      </div>
+      <div class="slide" tabindex="0">
+        <h2>4. Nutación</h2>
+        <p>Son pequeñas oscilaciones del eje terrestre durante el movimiento de precesión.</p>
+        <ul>
+          <li>Provoca variaciones mínimas en la inclinación del eje.</li>
+          <li>Tiene efectos muy leves en el clima a corto plazo.</li>
+          <li>Es importante para la astronomía y la navegación espacial precisa.</li>
+        </ul>
+        <img src="images/logo1.png" alt="Logo" class="corner-logo">
+      </div>
+
+      <div class="progress-wrap" aria-hidden="true">
+        <div class="progress-bar"></div>
+      </div>
+
+      <div class="controls" role="tablist" aria-label="Controles del carrusel">
+        <button data-index="0" role="tab" aria-selected="true">Rotación</button>
+        <button data-index="1" role="tab" aria-selected="false">Traslación</button>
+        <button data-index="2" role="tab" aria-selected="false">Precesión</button>
+        <button data-index="3" role="tab" aria-selected="false">Nutación</button>
+      </div>
+    </div>
+
+    <div id="slide-announcer" class="sr-only" aria-live="polite"></div>
+
+      <footer>
+        Proyecto de Física — Movimientos del planeta y sus efectos en la vida humana.
+      </footer>
+    </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="script.js" defer></script>
+</body>
+</html>
