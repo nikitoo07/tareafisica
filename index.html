@@ -4,79 +4,151 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Movimientos principales del planeta</title>
- 
-  <script>document.documentElement.classList.add('js');</script>
   <link href="styles.css" rel="stylesheet">
 </head>
 <body>
   <div class="stars"></div>
-  <div class="container">
-    <h1>  Movimientos   principales   de   la   Tierra   y   sus      efectos   en   los   humanos</h1>
-    <p>Antes de viajar al espacio, debemos comprender los <strong>4 movimientos principales</strong> de nuestro planeta y cómo influyen directamente en nuestra vida.</p>
+  <div class="cosmic-bg"></div>
 
-    <div class="gallery" aria-roledescription="carrusel" aria-label="Carrusel de movimientos de la Tierra">
-      <div class="slide active" tabindex="0">
-        <h2>1. Rotación</h2>
-        <p>La Tierra gira sobre su propio eje en aproximadamente 24 horas.</p>
-        <ul>
-          <li>Genera el ciclo de <strong>día y noche</strong>.</li>
-          <li>Regula el <strong>ritmo circadiano</strong> de las personas (sueño, hormonas, energía).</li>
-          <li>Causa variaciones de temperatura entre el día y la noche.</li>
-        </ul>
-        <img src="images/logo.png" alt="Logo CR7" class="corner-logo">
+  <!-- === Sección principal === -->
+  <section class="fullscreen hero-section">
+    <div class="container">
+      <div class="title-wrapper">
+        <h1 class="main-title">Movimientos principales de la Tierra y sus efectos en los humanos</h1>
+        <div class="title-glow"></div>
       </div>
-      <div class="slide" tabindex="0">
-        <h2>2. Traslación</h2>
-        <p>Es el movimiento de la Tierra alrededor del Sol, que tarda 365 días y 6 horas.</p>
-        <ul>
-          <li>Origina el <strong>año</strong> y define la duración de las estaciones.</li>
-          <li>Con la inclinación del eje, produce <strong>variaciones climáticas</strong> que afectan salud y agricultura.</li>
-          <li>Influye en la exposición solar y en nuestro estado de ánimo.</li>
-        </ul>
-        <img src="images/logo.png" alt="Logo CR7" class="corner-logo">
+      <p class="intro-text">
+        Antes de viajar al espacio, debemos comprender los 
+        <strong>4 movimientos principales</strong> de nuestro planeta y cómo influyen directamente en nuestra vida.
+      </p>
+      <div class="scroll-indicator">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- === Secciones de información === -->
+  <section class="fullscreen section-rotacion">
+    <div class="container">
+      <div class="section-number">01</div>
+      <h2 class="section-title">Rotación</h2>
+      
+      <div class="content-grid">
+        <div class="info-card">
+          <div class="card-icon">🌍</div>
+          <p class="card-text">La Tierra gira sobre su propio eje en aproximadamente <span class="highlight">24 horas</span>.</p>
+        </div>
         
-      </div>
-      <div class="slide" tabindex="0">
-        <h2>3. Precesión</h2>
-        <p>Es el lento movimiento de bamboleo del eje terrestre, con un ciclo de unos 26,000 años.</p>
-        <ul>
-          <li>Modifica a largo plazo la posición de las estrellas en el cielo.</li>
-          <li>Influye en los cambios climáticos a escalas de miles de años.</li>
-          <li>No se nota en la vida diaria, pero afecta la historia evolutiva del clima.</li>
-        </ul>
-        <img src="images/logo1.png" alt="Logo" class="corner-logo">
-      </div>
-      <div class="slide" tabindex="0">
-        <h2>4. Nutación</h2>
-        <p>Son pequeñas oscilaciones del eje terrestre durante el movimiento de precesión.</p>
-        <ul>
-          <li>Provoca variaciones mínimas en la inclinación del eje.</li>
-          <li>Tiene efectos muy leves en el clima a corto plazo.</li>
-          <li>Es importante para la astronomía y la navegación espacial precisa.</li>
-        </ul>
-        <img src="images/logo1.png" alt="Logo" class="corner-logo">
-      </div>
-
-      <div class="progress-wrap" aria-hidden="true">
-        <div class="progress-bar"></div>
-      </div>
-
-      <div class="controls" role="tablist" aria-label="Controles del carrusel">
-        <button data-index="0" role="tab" aria-selected="true">Rotación</button>
-        <button data-index="1" role="tab" aria-selected="false">Traslación</button>
-        <button data-index="2" role="tab" aria-selected="false">Precesión</button>
-        <button data-index="3" role="tab" aria-selected="false">Nutación</button>
+        <div class="info-card">
+          <div class="card-icon">🌓</div>
+          <p class="card-text">Genera el ciclo de <strong>día y noche</strong>.</p>
+        </div>
+        
+        <div class="info-card">
+          <div class="card-icon">😴</div>
+          <p class="card-text">Regula el <strong>ritmo circadiano</strong> de las personas (sueño, hormonas, energía).</p>
+        </div>
+        
+        <div class="info-card">
+          <div class="card-icon">🌡️</div>
+          <p class="card-text">Causa variaciones de temperatura entre el día y la noche.</p>
+        </div>
       </div>
     </div>
+  </section>
 
-    <div id="slide-announcer" class="sr-only" aria-live="polite"></div>
-
-      <footer>
-        Proyecto de Física — Movimientos del planeta y sus efectos en la vida humana.
-      </footer>
+  <section class="fullscreen section-traslacion">
+    <div class="container">
+      <div class="section-number">02</div>
+      <h2 class="section-title">Traslación</h2>
+      
+      <div class="content-grid">
+        <div class="info-card">
+          <div class="card-icon">☀️</div>
+          <p class="card-text">Es el movimiento de la Tierra alrededor del Sol, que tarda <span class="highlight">365 días y 6 horas</span>.</p>
+        </div>
+        
+        <div class="info-card">
+          <div class="card-icon">📅</div>
+          <p class="card-text">Origina el <strong>año</strong> y define la duración de las estaciones.</p>
+        </div>
+        
+        <div class="info-card">
+          <div class="card-icon">🌦️</div>
+          <p class="card-text">Con la inclinación del eje, produce <strong>variaciones climáticas</strong> que afectan salud y agricultura.</p>
+        </div>
+        
+        <div class="info-card">
+          <div class="card-icon">😊</div>
+          <p class="card-text">Influye en la exposición solar y en nuestro estado de ánimo.</p>
+        </div>
+      </div>
     </div>
+  </section>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script src="script.js" defer></script>
+  <section class="fullscreen section-precesion">
+    <div class="container">
+      <div class="section-number">03</div>
+      <h2 class="section-title">Precesión</h2>
+      
+      <div class="content-grid">
+        <div class="info-card">
+          <div class="card-icon">🔄</div>
+          <p class="card-text">Es el lento movimiento de bamboleo del eje terrestre, con un ciclo de unos <span class="highlight">26,000 años</span>.</p>
+        </div>
+        
+        <div class="info-card">
+          <div class="card-icon">⭐</div>
+          <p class="card-text">Modifica a largo plazo la posición de las estrellas en el cielo.</p>
+        </div>
+        
+        <div class="info-card">
+          <div class="card-icon">🌍</div>
+          <p class="card-text">Influye en los cambios climáticos a escalas de miles de años.</p>
+        </div>
+        
+        <div class="info-card">
+          <div class="card-icon">📜</div>
+          <p class="card-text">No se nota en la vida diaria, pero afecta la historia evolutiva del clima.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="fullscreen section-nutacion">
+    <div class="container">
+      <div class="section-number">04</div>
+      <h2 class="section-title">Nutación</h2>
+      
+      <div class="content-grid">
+        <div class="info-card">
+          <div class="card-icon">〰️</div>
+          <p class="card-text">Son pequeñas oscilaciones del eje terrestre durante el movimiento de precesión.</p>
+        </div>
+        
+        <div class="info-card">
+          <div class="card-icon">📐</div>
+          <p class="card-text">Provoca variaciones mínimas en la inclinación del eje.</p>
+        </div>
+        
+        <div class="info-card">
+          <div class="card-icon">🌤️</div>
+          <p class="card-text">Tiene efectos muy leves en el clima a corto plazo.</p>
+        </div>
+        
+        <div class="info-card">
+          <div class="card-icon">🚀</div>
+          <p class="card-text">Es importante para la astronomía y la navegación espacial precisa.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- === Scripts === -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
