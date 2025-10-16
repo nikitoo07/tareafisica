@@ -4,13 +4,12 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Movimientos principales del planeta</title>
-  <link href="styles.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="stars"></div>
   <div class="cosmic-bg"></div>
 
-  <!-- === Sección principal === -->
   <section class="fullscreen hero-section">
     <div class="container">
       <div class="title-wrapper">
@@ -29,7 +28,6 @@
     </div>
   </section>
 
-  <!-- === Secciones de información === -->
   <section class="fullscreen section-rotacion">
     <div class="container">
       <div class="section-number">01</div>
@@ -146,9 +144,345 @@
     </div>
   </section>
 
-  <!-- === Scripts === -->
+  <section class="fullscreen">
+    <div class="container">
+      <div class="section-number">05</div>
+      <h2 class="section-title">Tycho Brahe</h2>
+      
+      <p class="intro-text">
+        <strong>Tycho Brahe (1546-1601)</strong>, el astrónomo danés más preciso de la era pre-telescópica, revolucionó nuestra comprensión del cosmos. Descubre sus instrumentos revolucionarios y la fascinante historia que cambió su vida.
+      </p>
+
+      <div class="expand-buttons">
+        <button class="expand-btn" onclick="toggleSection('instruments')">
+          <span>
+            <span class="icon">🔭</span>
+            Instrumentos Astronómicos
+          </span>
+        </button>
+        <button class="expand-btn" onclick="toggleSection('newspaper')">
+          <span>
+            <span class="icon">📰</span>
+            El Misterio de su Nariz
+          </span>
+        </button>
+        <button class="expand-btn" onclick="toggleSection('solar-system')">
+          <span>
+            <span class="icon">🌎</span>
+            Modelo a escala
+          </span>
+        </button>
+      </div>
+
+      <div id="instruments" class="collapsible-content">
+        <div class="instruments-grid">
+          <div class="instrument-card">
+            <span class="instrument-icon">📐</span>
+            <h3 class="instrument-name">Cuadrante Mural</h3>
+            <p class="instrument-description">
+              Su instrumento más famoso, montado en una pared meridiana. Permitía medir la altitud de los astros con una precisión de 1 minuto de arco. Tenía un radio de casi 2 metros y estaba ricamente decorado.
+            </p>
+          </div>
+
+          <div class="instrument-card">
+            <span class="instrument-icon">📏</span>
+            <h3 class="instrument-name">Sextante</h3>
+            <p class="instrument-description">
+              Instrumento gigante de metal con un radio de 1.5 metros. Lo usaba para medir distancias angulares entre estrellas y planetas con increíble exactitud.
+            </p>
+          </div>
+
+          <div class="instrument-card">
+            <span class="instrument-icon">⭕</span>
+            <h3 class="instrument-name">Armila Ecuatorial</h3>
+            <p class="instrument-description">
+              Consistía en anillos graduados que representaban el ecuador celeste y otros círculos. Permitía determinar con precisión las coordenadas ecuatoriales de los astros.
+            </p>
+          </div>
+
+          <div class="instrument-card">
+            <span class="instrument-icon">📊</span>
+            <h3 class="instrument-name">Triquetrum</h3>
+            <p class="instrument-description">
+              Instrumento triangular heredado de Ptolomeo pero perfeccionado por Tycho. Medía distancias cenitales y permitía determinar la posición de los cuerpos celestes.
+            </p>
+          </div>
+
+          <div class="instrument-card">
+            <span class="instrument-icon">🌐</span>
+            <h3 class="instrument-name">Esfera Armilar</h3>
+            <p class="instrument-description">
+              Modelo tridimensional de la esfera celeste con anillos metálicos. Representaba el ecuador, los trópicos y otros círculos importantes para entender el movimiento de los astros.
+            </p>
+          </div>
+
+          <div class="instrument-card">
+            <span class="instrument-icon">🧭</span>
+            <h3 class="instrument-name">Astrolabio</h3>
+            <p class="instrument-description">
+              Versión mejorada del antiguo astrolabio. Tycho lo perfeccionó para realizar observaciones más precisas y calcular la posición de los cuerpos celestes en cualquier momento.
+            </p>
+          </div>
+        </div>
+
+        <div class="recommendation-box">
+          <h3 class="recommendation-title">💡 Recomendación para Expediciones</h3>
+          <p class="recommendation-text">
+            Para nuestras expediciones espaciales, el <strong>Cuadrante Mural</strong> sería el instrumento ideal en formato portátil. Su precisión excepcional y su diseño relativamente simple lo hacen perfecto para mediciones astronómicas en campo. Una versión moderna y compacta nos permitiría realizar observaciones con la misma exactitud que revolucionó la astronomía del siglo XVI.
+          </p>
+        </div>
+      </div>
+
+      <div id="newspaper" class="collapsible-content">
+        <div class="newspaper-container">
+          <div class="newspaper-header">
+            <h2 class="newspaper-title">THE COPENHAGEN CHRONICLE</h2>
+            <p class="newspaper-subtitle">Truth, Honor, and Daily Affairs</p>
+            <p class="newspaper-date">Rostock, Kingdom of Denmark • December 29, 1566</p>
+          </div>
+
+          <div class="newspaper-content">
+            <h1 class="headline">¡DUELO NOCTURNO DEJA A NOBLE ESTUDIANTE DESFIGURADO!</h1>
+            <p class="subheadline">Tycho Brahe pierde parte de su nariz en violenta confrontación por disputa matemática</p>
+
+            <div class="article-columns">
+              <p class="article-text">
+                En un giro dramático que ha conmocionado a la comunidad académica, el joven noble danés Tycho Brahe, de apenas 20 años, ha resultado gravemente herido en un duelo nocturno que tuvo lugar en las afueras de Rostock este pasado 10 de diciembre.
+              </p>
+
+              <p class="article-text">
+                Según testigos presenciales, la disputa comenzó durante un banquete de compromiso el 10 de diciembre, cuando Brahe y su compatriota Manderup Parsberg iniciaron una acalorada discusión sobre quién era el mejor matemático. Lo que comenzó como un debate intelectual escaló rápidamente a insultos personales.
+              </p>
+
+              <p class="article-text">
+                Aquella misma noche, ambos jóvenes se encontraron en un lugar apartado para resolver sus diferencias "como caballeros". En la oscuridad, con espadas en mano, los dos estudiantes se enfrentaron en un duelo que dejaría a Brahe marcado de por vida.
+              </p>
+
+              <p class="article-text">
+                El joven Parsberg logró asestar un golpe certero que cercenó parte del puente nasal de Brahe. Médicos que atendieron al herido confirman que perdió una porción significativa de su nariz, una herida que llevará consigo permanentemente.
+              </p>
+            </div>
+
+            <div class="illustration-box">
+              <div class="illustration-content">
+                🤺⚔️👃
+              </div>
+              <p class="illustration-caption">
+                Representación artística del fatídico duelo entre Tycho Brahe y Manderup Parsberg en Rostock
+              </p>
+            </div>
+
+            <div class="article-columns">
+              <p class="article-text">
+                En un acto de ingeniosa adaptación, el joven astrónomo ha encargado la fabricación de una prótesis nasal hecha de una aleación de metales preciosos. Orfebres locales han confirmado que trabajan en una pieza de latón y cobre, decorada con oro y plata, que Brahe llevará pegada a su rostro mediante un adhesivo especial.
+              </p>
+
+              <p class="article-text">
+                "Es un joven de espíritu indomable", comentó uno de los médicos que lo atendió. "A pesar de la desfiguración, mantiene su ánimo y ya habla de retomar sus estudios astronómicos".
+              </p>
+            </div>
+
+            <div class="quote-box">
+              <p class="article-text">
+                "La verdadera medida de un hombre no está en su rostro, sino en su capacidad para contemplar las estrellas y descifrar sus secretos."
+                <br><em>— Tycho Brahe, días después del incidente</em>
+              </p>
+            </div>
+
+            <div class="article-columns">
+              <p class="article-text">
+                Las autoridades universitarias han expresado su preocupación por este tipo de incidentes, recordando a los estudiantes que las disputas académicas deben resolverse con argumentos, no con armas.
+              </p>
+
+              <p class="article-text">
+                Fuentes cercanas a Brahe indican que el joven astrónomo no guarda rencor hacia Parsberg y que ambos han llegado a un entendimiento. Sin embargo, la cicatriz física permanecerá como recordatorio de aquella noche fatídica.
+              </p>
+
+              <p class="article-text">
+                Se espera que Brahe continúe con sus estudios y muchos predicen un futuro brillante para el joven noble, quien ha demostrado una pasión excepcional por la astronomía desde temprana edad. Su nariz postiza de metal, lejos de ser motivo de vergüenza, podría convertirse en su marca distintiva.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="solar-system" class="collapsible-content">
+        <div class="solar-system-intro">
+          <h3 class="solar-system-title">🌌 Sistema Solar a Escala</h3>
+          <p class="solar-system-description">
+            Desliza horizontalmente para explorar las verdaderas distancias entre los planetas y el Sol. 
+            Esta visualización muestra tanto el <strong>diámetro de cada planeta</strong> como su <strong>distancia al Sol</strong> 
+            en una escala proporcional (1 píxel = 1 millón de km).
+          </p>
+          <div class="scroll-hint">← Desliza para explorar →</div>
+        </div>
+
+        <div class="solar-system-container">
+          <div class="solar-system-track">
+            
+            <!-- Sol -->
+            <div class="celestial-body sun-body" style="left: 0px;">
+              <div class="planet-wrapper">
+                <div class="planet sun" style="width: 139.2px; height: 139.2px;"></div>
+                <div class="planet-glow sun-glow"></div>
+              </div>
+              <div class="planet-info">
+                <h4>☀️ Sol</h4>
+                <p class="planet-stat">Diámetro: 1,392,000 km</p>
+                <p class="planet-stat">Distancia: 0 km</p>
+              </div>
+            </div>
+
+            <!-- Mercurio -->
+            <div class="celestial-body" style="left: 5790px;">
+              <div class="planet-wrapper">
+                <div class="planet mercury" style="width: 4.9px; height: 4.9px;"></div>
+              </div>
+              <div class="planet-info">
+                <h4>☿️ Mercurio</h4>
+                <p class="planet-stat">Diámetro: 4,879 km</p>
+                <p class="planet-stat">Distancia: 57.9 millones km</p>
+                <p class="planet-detail">El planeta más cercano al Sol</p>
+              </div>
+            </div>
+
+            <!-- Venus -->
+            <div class="celestial-body" style="left: 10820px;">
+              <div class="planet-wrapper">
+                <div class="planet venus" style="width: 12.1px; height: 12.1px;"></div>
+              </div>
+              <div class="planet-info">
+                <h4>♀️ Venus</h4>
+                <p class="planet-stat">Diámetro: 12,104 km</p>
+                <p class="planet-stat">Distancia: 108.2 millones km</p>
+                <p class="planet-detail">El planeta más caliente</p>
+              </div>
+            </div>
+
+            <!-- Tierra -->
+            <div class="celestial-body earth-special" style="left: 14960px;">
+              <div class="planet-wrapper">
+                <div class="planet earth" style="width: 12.7px; height: 12.7px;"></div>
+                <div class="home-marker">🏠 Nuestro Hogar</div>
+              </div>
+              <div class="planet-info">
+                <h4>🌍 Tierra</h4>
+                <p class="planet-stat">Diámetro: 12,742 km</p>
+                <p class="planet-stat">Distancia: 149.6 millones km</p>
+                <p class="planet-detail">El único planeta con vida conocida</p>
+              </div>
+            </div>
+
+            <!-- Marte -->
+            <div class="celestial-body" style="left: 22790px;">
+              <div class="planet-wrapper">
+                <div class="planet mars" style="width: 6.8px; height: 6.8px;"></div>
+              </div>
+              <div class="planet-info">
+                <h4>♂️ Marte</h4>
+                <p class="planet-stat">Diámetro: 6,779 km</p>
+                <p class="planet-stat">Distancia: 227.9 millones km</p>
+                <p class="planet-detail">El planeta rojo</p>
+              </div>
+            </div>
+
+            <!-- Júpiter -->
+            <div class="celestial-body" style="left: 77850px;">
+              <div class="planet-wrapper">
+                <div class="planet jupiter" style="width: 139.8px; height: 139.8px;"></div>
+              </div>
+              <div class="planet-info">
+                <h4>♃ Júpiter</h4>
+                <p class="planet-stat">Diámetro: 139,820 km</p>
+                <p class="planet-stat">Distancia: 778.5 millones km</p>
+                <p class="planet-detail">El planeta más grande</p>
+              </div>
+            </div>
+
+            <!-- Saturno -->
+            <div class="celestial-body" style="left: 143440px;">
+              <div class="planet-wrapper">
+                <div class="planet saturn" style="width: 116.5px; height: 116.5px;"></div>
+                <div class="saturn-rings"></div>
+              </div>
+              <div class="planet-info">
+                <h4>♄ Saturno</h4>
+                <p class="planet-stat">Diámetro: 116,460 km</p>
+                <p class="planet-stat">Distancia: 1,434.4 millones km</p>
+                <p class="planet-detail">Famoso por sus anillos</p>
+              </div>
+            </div>
+
+            <!-- Urano -->
+            <div class="celestial-body" style="left: 287250px;">
+              <div class="planet-wrapper">
+                <div class="planet uranus" style="width: 50.7px; height: 50.7px;"></div>
+              </div>
+              <div class="planet-info">
+                <h4>♅ Urano</h4>
+                <p class="planet-stat">Diámetro: 50,724 km</p>
+                <p class="planet-stat">Distancia: 2,872.5 millones km</p>
+                <p class="planet-detail">Gira de lado</p>
+              </div>
+            </div>
+
+            <!-- Neptuno -->
+            <div class="celestial-body" style="left: 450430px;">
+              <div class="planet-wrapper">
+                <div class="planet neptune" style="width: 49.2px; height: 49.2px;"></div>
+              </div>
+              <div class="planet-info">
+                <h4>♆ Neptuno</h4>
+                <p class="planet-stat">Diámetro: 49,244 km</p>
+                <p class="planet-stat">Distancia: 4,504.3 millones km</p>
+                <p class="planet-detail">El planeta más lejano</p>
+              </div>
+            </div>
+
+            <!-- Marcador final -->
+            <div class="end-marker" style="left: 450500px;">
+              <div class="end-content">
+                <h4>🌟 Fin del Sistema Solar</h4>
+                <p>Has viajado más de 4,500 millones de kilómetros desde el Sol</p>
+                <p class="fun-fact">¡La luz tarda más de 4 horas en llegar hasta aquí!</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="solar-system-legend">
+          <h4>💡 Datos Fascinantes</h4>
+          <div class="legend-grid">
+            <div class="legend-item">
+              <span class="legend-icon">📏</span>
+              <p><strong>Escala:</strong> 1 píxel = 1 millón de km</p>
+            </div>
+            <div class="legend-item">
+              <span class="legend-icon">🚀</span>
+              <p><strong>Velocidad de la luz:</strong> 300,000 km/s</p>
+            </div>
+            <div class="legend-item">
+              <span class="legend-icon">⏱️</span>
+              <p><strong>Luz del Sol a la Tierra:</strong> ~8 minutos</p>
+            </div>
+            <div class="legend-item">
+              <span class="legend-icon">🌌</span>
+              <p><strong>Espacio vacío:</strong> El 99.9% es espacio entre planetas</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-  <script src="script.js"></script>
+  <script src="funciones.js"></script>
+  <!-- === Botones de Desarrolladores === -->
+  <div class="dev-buttons-container">
+    <button class="dev-button niko" onclick="window.location.href='https://www.instagram.com/cld.niko/'">Niko</button>
+    <button class="dev-button zuze" onclick="window.location.href='https://www.instagram.com/el.zuze/'">Zuze</button>
+  </div>
 </body>
 </html>
