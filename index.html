@@ -4,7 +4,9 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Movimientos principales del planeta</title>
-  <link rel="stylesheet" href="style.css">
+  
+  <!-- CSS externo -->
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <div class="stars"></div>
@@ -13,7 +15,7 @@
   <section class="fullscreen hero-section">
     <div class="container">
       <div class="title-wrapper">
-        <h1 class="main-title">Movimientos principales de la Tierra y sus efectos en los humanos</h1>
+        <h1 class="main-title">Movimientos Principales de la Tierra y sus Efectos en los Humanos</h1>
         <div class="title-glow"></div>
       </div>
       <p class="intro-text">
@@ -317,6 +319,106 @@
           <div class="scroll-hint">← Desliza para explorar →</div>
         </div>
 
+        <!-- Tabla Comparativa -->
+        <div class="comparison-table-container">
+          <h3 class="table-title">📊 Tabla Comparativa del Sistema Solar</h3>
+          <p class="table-description">
+            Comparación de tamaños y distancias con referencias cotidianas para comprender la inmensidad del espacio
+          </p>
+          
+          <div class="table-wrapper">
+            <table class="solar-table">
+              <thead>
+                <tr>
+                  <th>🪐 Cuerpo Celeste</th>
+                  <th>📏 Diámetro (km)</th>
+                  <th>📍 Distancia al Sol (millones km)</th>
+                  <th>🏙️ Escala Comprensible</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="sun-row">
+                  <td><strong>☀️ Sol</strong></td>
+                  <td>1,392,000 km</td>
+                  <td>0 km (centro)</td>
+                  <td>Si el Sol fuera una pelota de 1.4 metros, cabría en tu sala</td>
+                </tr>
+                <tr>
+                  <td><strong>☿️ Mercurio</strong></td>
+                  <td>4,879 km</td>
+                  <td>57.9</td>
+                  <td>Una canica de 5mm a 58 metros del Sol</td>
+                </tr>
+                <tr>
+                  <td><strong>♀️ Venus</strong></td>
+                  <td>12,104 km</td>
+                  <td>108.2</td>
+                  <td>Una pelota de ping-pong a 108 metros del Sol</td>
+                </tr>
+                <tr class="earth-row">
+                  <td><strong>🌍 Tierra</strong></td>
+                  <td>12,742 km</td>
+                  <td>149.6</td>
+                  <td>Una pelota de ping-pong a 150 metros (1.5 cuadras)</td>
+                </tr>
+                <tr>
+                  <td><strong>♂️ Marte</strong></td>
+                  <td>6,779 km</td>
+                  <td>227.9</td>
+                  <td>Una canica de 7mm a 228 metros (2 cuadras)</td>
+                </tr>
+                <tr>
+                  <td><strong>♃ Júpiter</strong></td>
+                  <td>139,820 km</td>
+                  <td>778.5</td>
+                  <td>Una pelota de básquetbol a 779 metros (8 cuadras)</td>
+                </tr>
+                <tr>
+                  <td><strong>♄ Saturno</strong></td>
+                  <td>116,460 km</td>
+                  <td>1,434.4</td>
+                  <td>Una pelota de fútbol a 1.4 km (14 cuadras)</td>
+                </tr>
+                <tr>
+                  <td><strong>♅ Urano</strong></td>
+                  <td>50,724 km</td>
+                  <td>2,872.5</td>
+                  <td>Una pelota de tenis a 2.9 km (medio pueblo)</td>
+                </tr>
+                <tr>
+                  <td><strong>♆ Neptuno</strong></td>
+                  <td>49,244 km</td>
+                  <td>4,504.3</td>
+                  <td>Una pelota de tenis a 4.5 km (de un extremo a otro de una ciudad pequeña)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="table-insights">
+            <div class="insight-card">
+              <span class="insight-icon">🎯</span>
+              <h4>Proporción Real</h4>
+              <p>Si el Sol fuera del tamaño de una pelota de playa (1.4m), la Tierra sería un grano de arena a 150 metros de distancia</p>
+            </div>
+            <div class="insight-card">
+              <span class="insight-icon">🚗</span>
+              <h4>En Automóvil</h4>
+              <p>Viajando a 100 km/h sin parar, tardarías <strong>17 años</strong> en llegar de la Tierra al Sol</p>
+            </div>
+            <div class="insight-card">
+              <span class="insight-icon">✈️</span>
+              <h4>En Avión</h4>
+              <p>Un avión comercial (900 km/h) tardaría <strong>19 años</strong> en llegar al Sol, ¡y 570 años en llegar a Neptuno!</p>
+            </div>
+            <div class="insight-card">
+              <span class="insight-icon">💡</span>
+              <h4>Velocidad de la Luz</h4>
+              <p>La luz del Sol tarda 8 minutos en llegar a la Tierra, pero <strong>4 horas y 10 minutos</strong> en llegar a Neptuno</p>
+            </div>
+          </div>
+        </div>
+
         <div class="solar-system-container">
           <div class="solar-system-track">
             
@@ -476,13 +578,15 @@
 
     </div>
   </section>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-  <script src="funciones.js"></script>
-  <!-- === Botones de Desarrolladores === -->
+
   <div class="dev-buttons-container">
     <button class="dev-button niko" onclick="window.location.href='https://www.instagram.com/cld.niko/'">Niko</button>
     <button class="dev-button zuze" onclick="window.location.href='https://www.instagram.com/el.zuze/'">Zuze</button>
   </div>
+
+  <!-- Scripts externos -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>

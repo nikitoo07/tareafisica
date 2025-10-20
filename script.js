@@ -1,12 +1,164 @@
+// Función para alternar secciones
+function toggleSection(sectionId) {
+  const section = document.getElementById(sectionId);
+  const allSections = document.querySelectorAll('.collapsible-content');
+  
+  if (section.classList.contains('active')) {
+    section.classList.remove('active');
+  } else {
+    allSections.forEach(s => s.classList.remove('active'));
+    section.classList.add('active');
+    
+    setTimeout(() => {
+      section.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }, 300);
+  }
+}
+
+// === FUNCIONES PARA LA TABLA COMPARATIVA ===
+
+function setupTableInteractions() {
+  const tableRows = document.querySelectorAll('.solar-table tbody tr');
+  
+  tableRows.forEach(row => {
+    row.addEventListener('mouseenter', function() {
+      this.style.transform = 'scale(1.02)';
+      this.style.boxShadow = '0 5px 20px rgba(154, 230, 180, 0.2)';
+    });
+    
+    row.addEventListener('mouseleave', function() {
+      this.style.transform = 'scale(1)';
+      this.style.boxShadow = 'none';
+    });
+  });
+}
+
+function animateTableNumbers() {
+  const cells = document.querySelectorAll('.solar-table td');
+  
+  cells.forEach((cell, index) => {
+    const text = cell.textContent;
+    const hasNumber = /\d/.test(text);
+    
+    if (hasNumber) {
+      cell.style.opacity = '0';
+      cell.style.transform = 'translateY(20px)';
+      
+      setTimeout(() => {
+        cell.style.transition = 'all 0.6s ease';
+        cell.style.opacity = '1';
+        cell.style.transform = 'translateY(0)';
+      }, index * 50);
+    }
+  });
+}
+
+function highlightInterestingFacts() {
+  const insights = document.querySelectorAll('.insight-card');
+  
+  insights.forEach((card, index) => {
+    card.addEventListener('click', function() {
+      gsap.to(this, {
+        scale: 1.05,
+        duration: 0.2,
+        yoyo: true,
+        repeat: 1,
+        ease: 'power2.inOut'
+      });
+      
+      gsap.to(this, {
+        boxShadow: '0 0 40px rgba(159, 122, 234, 0.6)',
+        duration: 0.3,
+        yoyo: true,
+        repeat: 1
+      });
+    });
+  });
+}
+
+function setupRowClickInfo() {
+  const rows = document.querySelectorAll('.solar-table tbody tr');
+  
+  rows.forEach(row => {
+    row.style.cursor = 'pointer';
+    
+    row.addEventListener('click', function() {
+      const planetName = this.querySelector('td strong').textContent;
+      const diameter = this.querySelectorAll('td')[1].textContent;
+      const distance = this.querySelectorAll('td')[2].textContent;
+      
+      const existingTooltip = document.querySelector('.planet-tooltip');
+      if (existingTooltip) existingTooltip.remove();
+      
+      const tooltip = document.createElement('div');
+      tooltip.className = 'planet-tooltip';
+      tooltip.innerHTML = `
+        <h4>${planetName}</h4>
+        <p><strong>Diámetro:</strong> ${diameter}</p>
+        <p><strong>Distancia:</strong> ${distance}</p>
+        <p class="tooltip-close">✖ Clic para cerrar</p>
+      `;
+      
+      document.body.appendChild(tooltip);
+      
+      gsap.fromTo(tooltip,
+        { opacity: 0, scale: 0.8, y: -20 },
+        { opacity: 1, scale: 1, y: 0, duration: 0.4, ease: 'back.out(1.7)' }
+      );
+      
+      tooltip.addEventListener('click', function() {
+        gsap.to(this, {
+          opacity: 0,
+          scale: 0.8,
+          duration: 0.3,
+          onComplete: () => this.remove()
+        });
+      });
+      
+      setTimeout(() => {
+        if (tooltip.parentNode) {
+          gsap.to(tooltip, {
+            opacity: 0,
+            scale: 0.8,
+            duration: 0.3,
+            onComplete: () => tooltip.remove()
+          });
+        }
+      }, 5000);
+    });
+  });
+}
+
+// === INICIALIZACIÓN DE TABLA COMPARATIVA ===
+document.addEventListener('DOMContentLoaded', function() {
+  const solarSystemSection = document.getElementById('solar-system');
+  
+  if (solarSystemSection) {
+    const observer = new MutationObserver(function(mutations) {
+      mutations.forEach(function(mutation) {
+        if (mutation.target.classList.contains('active')) {
+          setTimeout(() => {
+            setupTableInteractions();
+            highlightInterestingFacts();
+            setupRowClickInfo();
+            animateTableNumbers();
+          }, 100);
+        }
+      });
+    });
+    
+    observer.observe(solarSystemSection, {
+      attributes: true,
+      attributeFilter: ['class']
+    });
+  }
+});
+
+// === ANIMACIONES GSAP ===
 gsap.registerPlugin(ScrollTrigger);
 
 const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-const isMobile = window.innerWidth <= 768;
-const isLowPower = isMobile || navigator.hardwareConcurrency <= 4;
 
-// ==========================================
-// FUNCIÓN PARA DIVIDIR TEXTO EN CARACTERES
-// ==========================================
 function splitLetters(el) {
   if (!el) return [];
   if (el.dataset.split === 'true') return el.querySelectorAll('.char');
@@ -27,56 +179,39 @@ function splitLetters(el) {
   return el.querySelectorAll('.char');
 }
 
-// ==========================================
-// CONFIGURACIÓN DE ANIMACIONES SEGÚN DISPOSITIVO
-// ==========================================
-const animConfig = {
-  duration: isMobile ? 0.8 : 1.2,
-  stagger: isMobile ? 0.02 : 0.03,
-  ease: isMobile ? 'power2.out' : 'elastic.out(1, 0.6)'
-};
-
-// ==========================================
-// ANIMACIONES SOLO SI NO HAY MOVIMIENTO REDUCIDO
-// ==========================================
 if (!prefersReduced) {
   
-  // === ANIMACIÓN DEL FONDO CÓSMICO (Solo desktop) ===
-  if (!isMobile) {
-    gsap.to(".cosmic-bg", {
-      backgroundPosition: "100% 100%",
-      duration: 20,
-      repeat: -1,
-      yoyo: true,
-      ease: "sine.inOut"
-    });
-  }
+  // Animación de fondo cósmico
+  gsap.to(".cosmic-bg", {
+    backgroundPosition: "100% 100%",
+    duration: 20,
+    repeat: -1,
+    yoyo: true,
+    ease: "sine.inOut"
+  });
 
-  // === ANIMACIÓN DE ESTRELLAS (Reducida en móvil) ===
+  // Animación de estrellas
   gsap.to(".stars", {
-    backgroundPosition: isMobile ? "5000px 5000px" : "10000px 10000px",
-    duration: isMobile ? 150 : 300,
+    backgroundPosition: "10000px 10000px",
+    duration: 300,
     repeat: -1,
     ease: "none"
   });
 
-  // ==========================================
-  // ANIMACIÓN DEL TÍTULO PRINCIPAL
-  // ==========================================
+  // Animación del título principal
   const mainTitle = document.querySelector('.main-title');
   if (mainTitle) {
     const titleChars = splitLetters(mainTitle);
     
-    // Animación de entrada optimizada
     gsap.fromTo(titleChars,
       {
-        y: isMobile ? 50 : 100,
-        rotationX: isMobile ? -45 : -90,
-        rotationZ: isMobile ? 0 : gsap.utils.random(-15, 15),
+        y: 100,
+        rotationX: -90,
+        rotationZ: gsap.utils.random(-15, 15),
         opacity: 0,
         scale: 0.7,
         transformOrigin: "50% 50%",
-        filter: isMobile ? "blur(5px)" : "blur(10px)"
+        filter: "blur(10px)"
       },
       {
         y: 0,
@@ -85,12 +220,12 @@ if (!prefersReduced) {
         opacity: 1,
         scale: 1,
         filter: "blur(0px)",
-        duration: animConfig.duration,
+        duration: 1.2,
         stagger: {
-          each: animConfig.stagger,
-          from: isMobile ? "start" : "random"
+          each: 0.03,
+          from: "random"
         },
-        ease: animConfig.ease,
+        ease: 'elastic.out(1, 0.6)',
         scrollTrigger: {
           trigger: mainTitle,
           start: "top 80%",
@@ -99,47 +234,39 @@ if (!prefersReduced) {
       }
     );
 
-    // Pulso de brillo (reducido en móvil)
-    if (!isLowPower) {
-      gsap.to(mainTitle, {
-        textShadow: isMobile 
-          ? "0 0 25px rgba(154,230,180,0.9), 0 0 40px rgba(67,223,121,0.6)"
-          : "0 0 40px rgba(154,230,180,1), 0 0 60px rgba(67,223,121,0.8), 0 0 80px rgba(154,230,180,0.4)",
-        duration: 2.5,
-        repeat: -1,
-        yoyo: true,
-        ease: "sine.inOut"
-      });
-    }
+    // Pulsación del título
+    gsap.to(mainTitle, {
+      textShadow: "0 0 40px rgba(154,230,180,1), 0 0 60px rgba(67,223,121,0.8), 0 0 80px rgba(154,230,180,0.4)",
+      duration: 2.5,
+      repeat: -1,
+      yoyo: true,
+      ease: "sine.inOut"
+    });
 
-    // Animación del resplandor (solo desktop)
-    if (!isMobile) {
-      gsap.fromTo(".title-glow",
-        { scale: 0.8, opacity: 0 },
-        { scale: 1.2, opacity: 0.5, duration: 2, repeat: -1, yoyo: true, ease: "sine.inOut" }
-      );
-    }
+    // Animación del resplandor del título
+    gsap.fromTo(".title-glow",
+      { scale: 0.8, opacity: 0 },
+      { scale: 1.2, opacity: 0.6, duration: 2, repeat: -1, yoyo: true, ease: "sine.inOut" }
+    );
   }
 
-  // ==========================================
-  // ANIMACIÓN DEL TEXTO INTRODUCTORIO
-  // ==========================================
+  // Animación del texto introductorio
   const introText = document.querySelector('.intro-text');
   if (introText) {
     gsap.fromTo(introText,
       {
         opacity: 0,
-        y: isMobile ? 30 : 50,
+        y: 50,
         scale: 0.95,
-        rotationX: isMobile ? 0 : -15
+        rotationX: -15
       },
       {
         opacity: 1,
         y: 0,
         scale: 1,
         rotationX: 0,
-        duration: isMobile ? 1 : 1.4,
-        delay: isMobile ? 0.5 : 1,
+        duration: 1.4,
+        delay: 1,
         ease: "power3.out",
         scrollTrigger: {
           trigger: introText,
@@ -150,43 +277,39 @@ if (!prefersReduced) {
     );
   }
 
-  // ==========================================
-  // ANIMACIÓN DEL INDICADOR DE SCROLL
-  // ==========================================
+  // Animación del indicador de scroll
   const scrollIndicator = document.querySelector('.scroll-indicator');
-  if (scrollIndicator && !isMobile) {
+  if (scrollIndicator) {
     gsap.from(scrollIndicator, {
       opacity: 0,
       y: -20,
       duration: 1,
-      delay: 1.5,
+      delay: 2,
       ease: "power2.out"
     });
   }
 
-  // ==========================================
-  // ANIMACIONES DE CADA SECCIÓN
-  // ==========================================
+  // Animación de cada sección
   gsap.utils.toArray(".fullscreen").forEach((section, index) => {
-    if (index === 0) return; // Saltar la primera sección (hero)
+    if (index === 0) return;
 
     const sectionNumber = section.querySelector(".section-number");
     const h2 = section.querySelector(".section-title");
     const cards = section.querySelectorAll(".info-card");
 
-    // === ANIMACIÓN DEL NÚMERO DE SECCIÓN ===
-    if (sectionNumber && !isMobile) {
+    // Animación del número de sección
+    if (sectionNumber) {
       gsap.fromTo(sectionNumber,
         {
           scale: 0.5,
           opacity: 0,
-          rotation: -90
+          rotation: -180
         },
         {
           scale: 1,
           opacity: 0.08,
           rotation: 0,
-          duration: 1,
+          duration: 1.5,
           ease: "back.out(1.5)",
           scrollTrigger: {
             trigger: section,
@@ -197,17 +320,17 @@ if (!prefersReduced) {
       );
     }
 
-    // === ANIMACIÓN DEL TÍTULO DE SECCIÓN ===
+    // Animación del título de sección
     if (h2) {
       const h2Chars = splitLetters(h2);
       
       gsap.fromTo(h2Chars,
         {
-          y: isMobile ? 40 : 80,
+          y: 80,
           opacity: 0,
-          rotationY: isMobile ? 0 : 180,
+          rotationY: 180,
           scale: 0.5,
-          filter: isMobile ? "blur(3px)" : "blur(10px)"
+          filter: "blur(10px)"
         },
         {
           y: 0,
@@ -215,9 +338,9 @@ if (!prefersReduced) {
           rotationY: 0,
           scale: 1,
           filter: "blur(0px)",
-          duration: isMobile ? 0.8 : 1,
-          stagger: 0.02,
-          ease: isMobile ? "power2.out" : "back.out(1.4)",
+          duration: 1,
+          stagger: 0.025,
+          ease: "back.out(1.4)",
           scrollTrigger: {
             trigger: section,
             start: "top 70%",
@@ -226,31 +349,28 @@ if (!prefersReduced) {
         }
       );
 
-      // Efecto de brillo en h2 (reducido en móvil)
-      if (!isLowPower) {
-        gsap.to(h2, {
-          textShadow: isMobile
-            ? "0 0 20px rgba(154,230,180,0.9), 0 0 30px rgba(67,223,121,0.6)"
-            : "0 0 30px rgba(154,230,180,1), 0 0 45px rgba(67,223,121,0.8)",
-          duration: 2,
-          repeat: -1,
-          yoyo: true,
-          ease: "sine.inOut"
-        });
-      }
+      // Pulsación del título de sección
+      gsap.to(h2, {
+        textShadow: "0 0 30px rgba(154,230,180,1), 0 0 45px rgba(67,223,121,0.8)",
+        duration: 2,
+        repeat: -1,
+        yoyo: true,
+        ease: "sine.inOut"
+      });
     }
 
-    // === ANIMACIÓN DE LAS TARJETAS ===
+    // Animación de tarjetas
     if (cards.length) {
       cards.forEach((card, cardIndex) => {
-        // Entrada optimizada
+        
+        // Entrada de la tarjeta
         gsap.fromTo(card,
           {
             opacity: 0,
-            y: isMobile ? 50 : 100,
-            rotationX: isMobile ? 0 : -45,
-            scale: 0.9,
-            filter: isMobile ? "blur(3px)" : "blur(8px)"
+            y: 100,
+            rotationX: -45,
+            scale: 0.8,
+            filter: "blur(8px)"
           },
           {
             opacity: 1,
@@ -258,8 +378,8 @@ if (!prefersReduced) {
             rotationX: 0,
             scale: 1,
             filter: "blur(0px)",
-            duration: isMobile ? 0.6 : 1,
-            delay: cardIndex * (isMobile ? 0.1 : 0.15),
+            duration: 1,
+            delay: cardIndex * 0.15,
             ease: "power3.out",
             scrollTrigger: {
               trigger: section,
@@ -269,34 +389,32 @@ if (!prefersReduced) {
           }
         );
 
-        // Animación flotante (solo desktop)
-        if (!isMobile && !isLowPower) {
-          gsap.to(card, {
-            y: -8,
-            duration: 2 + (cardIndex * 0.3),
-            repeat: -1,
-            yoyo: true,
-            ease: "sine.inOut",
-            delay: cardIndex * 0.2
-          });
-        }
+        // Flotación de la tarjeta
+        gsap.to(card, {
+          y: -10,
+          duration: 2 + (cardIndex * 0.3),
+          repeat: -1,
+          yoyo: true,
+          ease: "sine.inOut",
+          delay: cardIndex * 0.2
+        });
 
-        // Animación del icono
+        // Animación del ícono
         const icon = card.querySelector('.card-icon');
         if (icon) {
           gsap.fromTo(icon,
             {
               scale: 0,
-              rotation: isMobile ? 0 : -180,
+              rotation: -180,
               opacity: 0
             },
             {
               scale: 1,
               rotation: 0,
               opacity: 1,
-              duration: 0.6,
-              delay: cardIndex * (isMobile ? 0.1 : 0.15) + 0.2,
-              ease: isMobile ? "back.out(1.5)" : "elastic.out(1, 0.5)",
+              duration: 0.8,
+              delay: cardIndex * 0.15 + 0.3,
+              ease: "elastic.out(1, 0.5)",
               scrollTrigger: {
                 trigger: section,
                 start: "top 65%",
@@ -305,124 +423,118 @@ if (!prefersReduced) {
             }
           );
 
-          // Rotación suave del icono (solo desktop)
-          if (!isMobile && !isLowPower) {
-            gsap.to(icon, {
-              rotation: 5,
-              duration: 2,
-              repeat: -1,
-              yoyo: true,
-              ease: "sine.inOut"
-            });
-          }
-        }
-
-        // Efecto de brillo en hover (solo desktop)
-        if (!isMobile) {
-          card.addEventListener('mouseenter', () => {
-            gsap.to(card, {
-              boxShadow: "0 20px 60px rgba(0,0,0,0.5), 0 0 50px rgba(154,230,180,0.3), inset 0 0 25px rgba(154,230,180,0.08)",
-              borderColor: "rgba(154,230,180,0.7)",
-              duration: 0.3,
-              ease: "power2.out"
-            });
-          });
-
-          card.addEventListener('mouseleave', () => {
-            gsap.to(card, {
-              boxShadow: "0 0 0 rgba(0,0,0,0)",
-              borderColor: "rgba(154,230,180,0.2)",
-              duration: 0.3,
-              ease: "power2.out"
-            });
+          // Rotación del ícono
+          gsap.to(icon, {
+            rotation: 5,
+            duration: 2,
+            repeat: -1,
+            yoyo: true,
+            ease: "sine.inOut"
           });
         }
+
+        // Efectos hover con GSAP
+        card.addEventListener('mouseenter', () => {
+          gsap.to(card, {
+            boxShadow: "0 20px 60px rgba(0,0,0,0.5), 0 0 60px rgba(154,230,180,0.4), inset 0 0 30px rgba(154,230,180,0.1)",
+            borderColor: "rgba(154,230,180,0.8)",
+            duration: 0.3,
+            ease: "power2.out"
+          });
+        });
+
+        card.addEventListener('mouseleave', () => {
+          gsap.to(card, {
+            boxShadow: "0 0 0 rgba(0,0,0,0)",
+            borderColor: "rgba(154,230,180,0.2)",
+            duration: 0.3,
+            ease: "power2.out"
+          });
+        });
       });
     }
 
-    // === EFECTO PARALLAX (solo desktop) ===
-    if (!isMobile) {
-      gsap.to(section, {
-        y: -60,
-        ease: "none",
-        scrollTrigger: {
-          trigger: section,
-          start: "top bottom",
-          end: "bottom top",
-          scrub: 1
-        }
-      });
-    }
-  });
-
-  // ==========================================
-  // ANIMACIONES DE HIGHLIGHTS (reducido en móvil)
-  // ==========================================
-  if (!isLowPower) {
-    gsap.utils.toArray('.highlight').forEach((highlight) => {
-      gsap.to(highlight, {
-        textShadow: isMobile
-          ? "0 0 10px rgba(79,209,197,0.7)"
-          : "0 0 15px rgba(79,209,197,0.8), 0 0 25px rgba(79,209,197,0.5)",
-        duration: 1.5,
-        repeat: -1,
-        yoyo: true,
-        ease: "sine.inOut"
-      });
-    });
-  }
-}
-
-// ==========================================
-// OPTIMIZACIÓN: Pausar animaciones fuera de vista
-// ==========================================
-if (!prefersReduced && !isMobile) {
-  document.addEventListener('visibilitychange', () => {
-    if (document.hidden) {
-      gsap.globalTimeline.pause();
-    } else {
-      gsap.globalTimeline.resume();
-    }
-  });
-}
-
-// ==========================================
-// MANEJO DE RESIZE RESPONSIVO
-// ==========================================
-let resizeTimer;
-window.addEventListener('resize', () => {
-  clearTimeout(resizeTimer);
-  resizeTimer = setTimeout(() => {
-    ScrollTrigger.refresh();
-  }, 250);
-});
-
-// ==========================================
-// LAZY LOADING DE ANIMACIONES PESADAS
-// ==========================================
-if ('IntersectionObserver' in window && !isMobile) {
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
+    // Efecto parallax en la sección
+    gsap.to(section, {
+      y: -80,
+      ease: "none",
+      scrollTrigger: {
+        trigger: section,
+        start: "top bottom",
+        end: "bottom top",
+        scrub: 1.5
       }
     });
-  }, { threshold: 0.1 });
-
-  document.querySelectorAll('.info-card').forEach(card => {
-    observer.observe(card);
   });
-}
 
-// ==========================================
-// PERFORMANCE: Reducir animaciones en batería baja
-// ==========================================
-if ('getBattery' in navigator) {
-  navigator.getBattery().then(battery => {
-    if (battery.level < 0.2 && !battery.charging) {
-      gsap.globalTimeline.timeScale(0.5);
-    } else {
-      gsap.globalTimeline.timeScale(1);
-    }
+  // Animación de elementos resaltados
+  gsap.utils.toArray('.highlight').forEach((highlight) => {
+    gsap.to(highlight, {
+      textShadow: "0 0 15px rgba(79,209,197,0.8), 0 0 25px rgba(79,209,197,0.5)",
+      duration: 1.5,
+      repeat: -1,
+      yoyo: true,
+      ease: "sine.inOut"
+    });
   });
+
+  // Animación de botones expandibles
+  gsap.utils.toArray('.expand-btn').forEach((btn, i) => {
+    gsap.fromTo(btn,
+      { opacity: 0, y: 30, scale: 0.9 },
+      {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        duration: 0.8,
+        delay: i * 0.2,
+        ease: "back.out(1.5)",
+        scrollTrigger: {
+          trigger: btn,
+          start: "top 85%",
+          toggleActions: "play none none reverse"
+        }
+      }
+    );
+  });
+
+  // Animación de tarjetas de instrumentos
+  gsap.utils.toArray('.instrument-card').forEach((card, i) => {
+    gsap.fromTo(card,
+      { opacity: 0, y: 50, rotationY: -15 },
+      {
+        opacity: 1,
+        y: 0,
+        rotationY: 0,
+        duration: 0.8,
+        delay: i * 0.1,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: card,
+          start: "top 85%",
+          toggleActions: "play none none reverse"
+        }
+      }
+    );
+  });
+
+  // Animación del periódico
+  const newspaper = document.querySelector('.newspaper-container');
+  if (newspaper) {
+    gsap.fromTo(newspaper,
+      { opacity: 0, y: 100, rotationX: -20 },
+      {
+        opacity: 1,
+        y: 0,
+        rotationX: 0,
+        duration: 1.2,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: newspaper,
+          start: "top 80%",
+          toggleActions: "play none none reverse"
+        }
+      }
+    );
+  }
 }
