@@ -127,7 +127,7 @@ h1 {
     0 0 25px rgba(67, 223, 121, 0.3);
   margin-bottom: 1.5rem;
   line-height: 1.2;
-  letter-spacing: -0.06em;
+  letter-spacing: -0.04em;
   position: relative;
   z-index: 1;
 }
@@ -1565,5 +1565,96 @@ strong {
   .info-card:active {
     transform: scale(0.98);
     background: linear-gradient(135deg, rgba(26, 32, 44, 0.9), rgba(45, 55, 72, 0.7));
+  }
+}
+/* === BOTONES DE NAVEGACIÓN RÁPIDA === */
+/* Agrega esto ANTES de la clase .solar-system-container */
+
+.planet-navigation {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, rgba(26, 32, 44, 0.6), rgba(45, 55, 72, 0.4));
+  border: 1px solid rgba(154, 230, 180, 0.3);
+  border-radius: 16px;
+}
+
+.nav-planet-btn {
+  font-family: 'Orbitron', monospace;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.6rem 1.2rem;
+  background: linear-gradient(135deg, rgba(154, 230, 180, 0.1), rgba(79, 209, 197, 0.1));
+  border: 1.5px solid rgba(154, 230, 180, 0.3);
+  border-radius: 25px;
+  color: var(--green);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.nav-planet-btn:hover {
+  transform: translateY(-2px);
+  border-color: rgba(154, 230, 180, 0.6);
+  background: linear-gradient(135deg, rgba(154, 230, 180, 0.2), rgba(79, 209, 197, 0.2));
+  box-shadow: 0 5px 20px rgba(154, 230, 180, 0.3);
+  text-shadow: 0 0 10px rgba(154, 230, 180, 0.5);
+}
+
+.nav-planet-btn:active {
+  transform: translateY(0);
+}
+
+/* === MODIFICACIÓN A .solar-system-container === */
+/* BUSCA la clase .solar-system-container y AGREGA esta línea al final: */
+.solar-system-container {
+  width: 100%;
+  height: 500px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  background: linear-gradient(to bottom, #000000, #0a0a1a);
+  border: 2px solid rgba(159, 122, 234, 0.3);
+  border-radius: 16px;
+  position: relative;
+  margin: 2rem 0;
+  box-shadow: 
+    inset 0 0 50px rgba(0, 0, 0, 0.8),
+    0 10px 40px rgba(159, 122, 234, 0.2);
+  padding-left: 100px; /* <- AGREGA ESTA LÍNEA */
+}
+
+/* === MEDIA QUERIES === */
+/* Agrega esto dentro de @media (max-width: 768px) */
+@media (max-width: 768px) {
+  /* ... tus estilos existentes ... */
+  
+  .planet-navigation {
+    gap: 0.5rem;
+    padding: 1rem;
+  }
+  
+  .nav-planet-btn {
+    font-size: 0.75rem;
+    padding: 0.5rem 0.8rem;
+  }
+}
+
+/* Agrega esto dentro de @media (max-width: 480px) */
+@media (max-width: 480px) {
+  /* ... tus estilos existentes ... */
+  
+  .planet-navigation {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .nav-planet-btn {
+    width: 100%;
+    font-size: 0.8rem;
   }
 }

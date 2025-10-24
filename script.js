@@ -487,7 +487,7 @@ if (!prefersReduced) {
         y: 0,
         scale: 1,
         duration: 0.8,
-        delay: i * 0.2,
+       
         ease: "back.out(1.5)",
         scrollTrigger: {
           trigger: btn,
@@ -538,3 +538,17 @@ if (!prefersReduced) {
     );
   }
 }
+// === FUNCIÓN DE NAVEGACIÓN DE PLANETAS ===
+// Agrega esta función al INICIO de tu archivo script.js, después de toggleSection()
+
+function scrollToPlanet(position) {
+  const container = document.getElementById('solarSystemContainer');
+  if (container) {
+    container.scrollTo({
+      left: position,
+      behavior: 'smooth'
+    });
+  }
+}
+
+// El resto de tu código permanece igual...

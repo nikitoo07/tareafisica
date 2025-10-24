@@ -15,7 +15,7 @@
   <section class="fullscreen hero-section">
     <div class="container">
       <div class="title-wrapper">
-        <h1 class="main-title">Movimientos Principales de la Tierra y sus Efectos en los Humanos</h1>
+        <h1 class="main-title" id="noseparar">Movimientos Principales de la Tierra y sus Efectos en los Humanos</h1>
         <div class="title-glow"></div>
       </div>
       <p class="intro-text">
@@ -419,11 +419,24 @@
           </div>
         </div>
 
-        <div class="solar-system-container">
-          <div class="solar-system-track">
+        <!-- Botones de navegación rápida -->
+        <div class="planet-navigation">
+          <button class="nav-planet-btn" onclick="scrollToPlanet(0)">☀️ Sol</button>
+          <button class="nav-planet-btn" onclick="scrollToPlanet(5790)">☿️ Mercurio</button>
+          <button class="nav-planet-btn" onclick="scrollToPlanet(10820)">♀️ Venus</button>
+          <button class="nav-planet-btn" onclick="scrollToPlanet(14960)">🌍 Tierra</button>
+          <button class="nav-planet-btn" onclick="scrollToPlanet(22790)">♂️ Marte</button>
+          <button class="nav-planet-btn" onclick="scrollToPlanet(77850)">♃ Júpiter</button>
+          <button class="nav-planet-btn" onclick="scrollToPlanet(143440)">♄ Saturno</button>
+          <button class="nav-planet-btn" onclick="scrollToPlanet(287250)">♅ Urano</button>
+          <button class="nav-planet-btn" onclick="scrollToPlanet(450430)">♆ Neptuno</button>
+        </div>
+
+        <div class="solar-system-container" id="solarSystemContainer">
+          <div class="solar-system-track" style="width: 451700px;">
             
             <!-- Sol -->
-            <div class="celestial-body sun-body" style="left: 0px;">
+            <div class="celestial-body sun-body" style="left: 200px;">
               <div class="planet-wrapper">
                 <div class="planet sun" style="width: 139.2px; height: 139.2px;"></div>
                 <div class="planet-glow sun-glow"></div>
@@ -436,7 +449,7 @@
             </div>
 
             <!-- Mercurio -->
-            <div class="celestial-body" style="left: 5790px;">
+            <div class="celestial-body" style="left: 5990px;">
               <div class="planet-wrapper">
                 <div class="planet mercury" style="width: 4.9px; height: 4.9px;"></div>
               </div>
@@ -449,7 +462,7 @@
             </div>
 
             <!-- Venus -->
-            <div class="celestial-body" style="left: 10820px;">
+            <div class="celestial-body" style="left: 11020px;">
               <div class="planet-wrapper">
                 <div class="planet venus" style="width: 12.1px; height: 12.1px;"></div>
               </div>
@@ -462,7 +475,7 @@
             </div>
 
             <!-- Tierra -->
-            <div class="celestial-body earth-special" style="left: 14960px;">
+            <div class="celestial-body earth-special" style="left: 15160px;">
               <div class="planet-wrapper">
                 <div class="planet earth" style="width: 12.7px; height: 12.7px;"></div>
                 <div class="home-marker">🏠 Nuestro Hogar</div>
@@ -476,7 +489,7 @@
             </div>
 
             <!-- Marte -->
-            <div class="celestial-body" style="left: 22790px;">
+            <div class="celestial-body" style="left: 22990px;">
               <div class="planet-wrapper">
                 <div class="planet mars" style="width: 6.8px; height: 6.8px;"></div>
               </div>
@@ -489,7 +502,7 @@
             </div>
 
             <!-- Júpiter -->
-            <div class="celestial-body" style="left: 77850px;">
+            <div class="celestial-body" style="left: 78050px;">
               <div class="planet-wrapper">
                 <div class="planet jupiter" style="width: 139.8px; height: 139.8px;"></div>
               </div>
@@ -502,7 +515,7 @@
             </div>
 
             <!-- Saturno -->
-            <div class="celestial-body" style="left: 143440px;">
+            <div class="celestial-body" style="left: 143640px;">
               <div class="planet-wrapper">
                 <div class="planet saturn" style="width: 116.5px; height: 116.5px;"></div>
                 <div class="saturn-rings"></div>
@@ -516,7 +529,7 @@
             </div>
 
             <!-- Urano -->
-            <div class="celestial-body" style="left: 287250px;">
+            <div class="celestial-body" style="left: 287450px;">
               <div class="planet-wrapper">
                 <div class="planet uranus" style="width: 50.7px; height: 50.7px;"></div>
               </div>
@@ -529,7 +542,7 @@
             </div>
 
             <!-- Neptuno -->
-            <div class="celestial-body" style="left: 450430px;">
+            <div class="celestial-body" style="left: 450630px;">
               <div class="planet-wrapper">
                 <div class="planet neptune" style="width: 49.2px; height: 49.2px;"></div>
               </div>
@@ -542,7 +555,7 @@
             </div>
 
             <!-- Marcador final -->
-            <div class="end-marker" style="left: 450500px;">
+            <div class="end-marker" style="left: 451200px;">
               <div class="end-content">
                 <h4>🌟 Fin del Sistema Solar</h4>
                 <p>Has viajado más de 4,500 millones de kilómetros desde el Sol</p>
@@ -557,7 +570,7 @@
           <h4>💡 Datos Fascinantes</h4>
           <div class="legend-grid">
             <div class="legend-item">
-              <span class="legend-icon">📏</span>
+              <span class="legend-icon">📐</span>
               <p><strong>Escala:</strong> 1 píxel = 1 millón de km</p>
             </div>
             <div class="legend-item">
