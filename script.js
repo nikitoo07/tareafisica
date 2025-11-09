@@ -1,4 +1,4 @@
-// Función para alternar secciones
+
 function toggleSection(sectionId) {
   const section = document.getElementById(sectionId);
   const allSections = document.querySelectorAll('.collapsible-content');
@@ -14,8 +14,6 @@ function toggleSection(sectionId) {
     }, 300);
   }
 }
-
-// === FUNCIONES PARA LA TABLA COMPARATIVA ===
 
 function setupTableInteractions() {
   const tableRows = document.querySelectorAll('.solar-table tbody tr');
@@ -129,7 +127,6 @@ function setupRowClickInfo() {
   });
 }
 
-// === INICIALIZACIÓN DE TABLA COMPARATIVA ===
 document.addEventListener('DOMContentLoaded', function() {
   const solarSystemSection = document.getElementById('solar-system');
   
@@ -154,7 +151,6 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 
-// === ANIMACIONES GSAP ===
 gsap.registerPlugin(ScrollTrigger);
 
 const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -181,7 +177,6 @@ function splitLetters(el) {
 
 if (!prefersReduced) {
   
-  // Animación de fondo cósmico
   gsap.to(".cosmic-bg", {
     backgroundPosition: "100% 100%",
     duration: 20,
@@ -190,7 +185,6 @@ if (!prefersReduced) {
     ease: "sine.inOut"
   });
 
-  // Animación de estrellas
   gsap.to(".stars", {
     backgroundPosition: "10000px 10000px",
     duration: 300,
@@ -198,7 +192,6 @@ if (!prefersReduced) {
     ease: "none"
   });
 
-  // Animación del título principal
   const mainTitle = document.querySelector('.main-title');
   if (mainTitle) {
     const titleChars = splitLetters(mainTitle);
@@ -233,8 +226,6 @@ if (!prefersReduced) {
         }
       }
     );
-
-    // Pulsación del título
     gsap.to(mainTitle, {
       textShadow: "0 0 40px rgba(154,230,180,1), 0 0 60px rgba(67,223,121,0.8), 0 0 80px rgba(154,230,180,0.4)",
       duration: 2.5,
@@ -243,14 +234,12 @@ if (!prefersReduced) {
       ease: "sine.inOut"
     });
 
-    // Animación del resplandor del título
     gsap.fromTo(".title-glow",
       { scale: 0.8, opacity: 0 },
       { scale: 1.2, opacity: 0.6, duration: 2, repeat: -1, yoyo: true, ease: "sine.inOut" }
     );
   }
 
-  // Animación del texto introductorio
   const introText = document.querySelector('.intro-text');
   if (introText) {
     gsap.fromTo(introText,
@@ -277,7 +266,6 @@ if (!prefersReduced) {
     );
   }
 
-  // Animación del indicador de scroll
   const scrollIndicator = document.querySelector('.scroll-indicator');
   if (scrollIndicator) {
     gsap.from(scrollIndicator, {
@@ -289,7 +277,6 @@ if (!prefersReduced) {
     });
   }
 
-  // Animación de cada sección
   gsap.utils.toArray(".fullscreen").forEach((section, index) => {
     if (index === 0) return;
 
@@ -297,7 +284,6 @@ if (!prefersReduced) {
     const h2 = section.querySelector(".section-title");
     const cards = section.querySelectorAll(".info-card");
 
-    // Animación del número de sección
     if (sectionNumber) {
       gsap.fromTo(sectionNumber,
         {
@@ -319,8 +305,6 @@ if (!prefersReduced) {
         }
       );
     }
-
-    // Animación del título de sección
     if (h2) {
       const h2Chars = splitLetters(h2);
       
@@ -349,7 +333,6 @@ if (!prefersReduced) {
         }
       );
 
-      // Pulsación del título de sección
       gsap.to(h2, {
         textShadow: "0 0 30px rgba(154,230,180,1), 0 0 45px rgba(67,223,121,0.8)",
         duration: 2,
@@ -359,11 +342,9 @@ if (!prefersReduced) {
       });
     }
 
-    // Animación de tarjetas
     if (cards.length) {
       cards.forEach((card, cardIndex) => {
         
-        // Entrada de la tarjeta
         gsap.fromTo(card,
           {
             opacity: 0,
@@ -389,7 +370,6 @@ if (!prefersReduced) {
           }
         );
 
-        // Flotación de la tarjeta
         gsap.to(card, {
           y: -10,
           duration: 2 + (cardIndex * 0.3),
@@ -399,7 +379,6 @@ if (!prefersReduced) {
           delay: cardIndex * 0.2
         });
 
-        // Animación del ícono
         const icon = card.querySelector('.card-icon');
         if (icon) {
           gsap.fromTo(icon,
@@ -423,7 +402,6 @@ if (!prefersReduced) {
             }
           );
 
-          // Rotación del ícono
           gsap.to(icon, {
             rotation: 5,
             duration: 2,
@@ -433,7 +411,6 @@ if (!prefersReduced) {
           });
         }
 
-        // Efectos hover con GSAP
         card.addEventListener('mouseenter', () => {
           gsap.to(card, {
             boxShadow: "0 20px 60px rgba(0,0,0,0.5), 0 0 60px rgba(154,230,180,0.4), inset 0 0 30px rgba(154,230,180,0.1)",
@@ -454,7 +431,6 @@ if (!prefersReduced) {
       });
     }
 
-    // Efecto parallax en la sección
     gsap.to(section, {
       y: -80,
       ease: "none",
@@ -467,7 +443,6 @@ if (!prefersReduced) {
     });
   });
 
-  // Animación de elementos resaltados
   gsap.utils.toArray('.highlight').forEach((highlight) => {
     gsap.to(highlight, {
       textShadow: "0 0 15px rgba(79,209,197,0.8), 0 0 25px rgba(79,209,197,0.5)",
@@ -478,7 +453,6 @@ if (!prefersReduced) {
     });
   });
 
-  // Animación de botones expandibles
   gsap.utils.toArray('.expand-btn').forEach((btn, i) => {
     gsap.fromTo(btn,
       { opacity: 0, y: 30, scale: 0.9 },
@@ -487,7 +461,7 @@ if (!prefersReduced) {
         y: 0,
         scale: 1,
         duration: 0.8,
-       
+        delay: i * 0.2,
         ease: "back.out(1.5)",
         scrollTrigger: {
           trigger: btn,
@@ -498,7 +472,6 @@ if (!prefersReduced) {
     );
   });
 
-  // Animación de tarjetas de instrumentos
   gsap.utils.toArray('.instrument-card').forEach((card, i) => {
     gsap.fromTo(card,
       { opacity: 0, y: 50, rotationY: -15 },
@@ -518,7 +491,6 @@ if (!prefersReduced) {
     );
   });
 
-  // Animación del periódico
   const newspaper = document.querySelector('.newspaper-container');
   if (newspaper) {
     gsap.fromTo(newspaper,
@@ -538,8 +510,7 @@ if (!prefersReduced) {
     );
   }
 }
-// === FUNCIÓN DE NAVEGACIÓN DE PLANETAS ===
-// Agrega esta función al INICIO de tu archivo script.js, después de toggleSection()
+
 
 function scrollToPlanet(position) {
   const container = document.getElementById('solarSystemContainer');
@@ -551,4 +522,101 @@ function scrollToPlanet(position) {
   }
 }
 
-// El resto de tu código permanece igual...
+function showContinueModal() {
+  const modal = document.getElementById('continueModal');
+  modal.classList.add('active');
+  
+  document.body.style.overflow = 'hidden';
+}
+
+function closeContinueModal() {
+  const modal = document.getElementById('continueModal');
+  modal.classList.remove('active');
+  
+  document.body.style.overflow = 'auto';
+}
+
+function goToNextPage() {
+ 
+  window.location.href = 'aki url';
+  
+ 
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  const modal = document.getElementById('continueModal');
+  
+  if (modal) {
+    modal.addEventListener('click', function(e) {
+      if (e.target === modal) {
+        closeContinueModal();
+      }
+    });
+  }
+  
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      closeContinueModal();
+    }
+  });
+});
+
+function showContinueModal() {
+  const modal = document.getElementById('continueModal');
+  modal.classList.add('active');
+  
+  document.body.style.overflow = 'hidden';
+  
+}
+
+function closeContinueModal() {
+  const modal = document.getElementById('continueModal');
+  modal.classList.remove('active');
+  
+  document.body.style.overflow = 'auto';
+}
+
+function goToNextPage() {
+ 
+  window.location.href = 'https://nikitoo07.github.io/sol/';
+  
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  const modal = document.getElementById('continueModal');
+  
+  if (modal) {
+    modal.addEventListener('click', function(e) {
+      if (e.target === modal) {
+        closeContinueModal();
+      }
+    });
+  }
+  
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      closeContinueModal();
+    }
+  });
+  
+  const solarSystemSection = document.getElementById('solar-system');
+  
+  if (solarSystemSection) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+         
+          const continueSection = document.querySelector('.continue-section');
+          if (continueSection) {
+            continueSection.classList.add('visible');
+          }
+        }
+      });
+    }, {
+      threshold: 0.3 
+    });
+    
+    observer.observe(solarSystemSection);
+  }
+});
+
